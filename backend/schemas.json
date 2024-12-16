@@ -1,0 +1,78 @@
+{
+    "users":{
+        "_id": ObjectId(),
+        "name": {
+          "first": "John",
+          "last": "Doe"
+        },
+        "email": "john.doe@example.com",
+        "phone": "+123456789",
+        "passwordHash": "hashed_password_here",
+        "preferences": {
+          "language": "English",
+          "currency": "USD"
+        },
+        "createdAt": ISODate("2023-12-09T12:00:00Z"),
+        "updatedAt": ISODate("2023-12-09T12:00:00Z")
+      },
+
+    "trips":{
+    "_id": ObjectId(),
+    "trip_name": "Summer Vacation",
+    "description": "Trip to Bali for 2 weeks",
+    "userId": ObjectId("UserIdReference"),
+    "startDate": ISODate("2024-06-01T00:00:00Z"),
+    "endDate": ISODate("2024-06-15T00:00:00Z"),
+    "trip_days": 14,
+    "destinations": [
+        {
+        "city": "Bali",
+        "country": "Indonesia"
+        },
+        {
+        "city": "Jakarta",
+        "country": "Indonesia"
+        }
+    ],
+    "createdAt": ISODate("2023-12-09T12:00:00Z"),
+    "updatedAt": ISODate("2023-12-09T12:00:00Z")
+    },
+
+    "bookings":{
+        "_id": ObjectId(),
+        "tripId": ObjectId("TripIdReference"),
+        "userId": ObjectId("UserIdReference"),
+        "bookingType": "Hotel",
+        "details": {
+          "hotelName": "Grand Bali Resort",
+          "checkIn": ISODate("2024-06-01T14:00:00Z"),
+          "checkOut": ISODate("2024-06-10T12:00:00Z"),
+          "price": 1200,
+          "currency": "USD"
+        },
+        "createdAt": ISODate("2023-12-09T12:00:00Z"),
+        "updatedAt": ISODate("2023-12-09T12:00:00Z"),
+        "status":"in-progress"
+      },
+
+      "preferences":{
+        "_id": ObjectId(),
+        "userId": ObjectId("UserIdReference"),
+        "language": "English",
+        "budget": "10000-15000",
+        "budget_currency":"USD",
+        "interests":[
+          "movies",
+          "music"
+        ],
+        "dream_destinations":[
+          "Spain",
+          "Italy"
+        ],
+        "weather_preferences":[
+          "lots Sunny day"
+        ],
+        "createdAt": ISODate("2023-12-09T12:00:00Z"),
+        "updatedAt": ISODate("2023-12-09T12:00:00Z")
+      }
+}
