@@ -22,11 +22,11 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/trips', require('./routes/tripRoutes'));
-app.use('/api/bookings', require('./routes/bookingRoutes'));
-app.use('/api/preferences', require('./routes/preferencesRoutes'));
+// app.use('/api/bookings', require('./routes/bookingRoutes'));
+// app.use('/api/preferences', require('./routes/preferencesRoutes'));
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5002;
 app.listen(PORT, ()=>{
     console.log(`Server running on http://localhost:${PORT}`);
 })

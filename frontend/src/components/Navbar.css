@@ -1,0 +1,7 @@
+nav{
+    text-align: right;
+    margin-bottom: 1rem;
+    button {
+        color: #ff6701;
+    }
+}
