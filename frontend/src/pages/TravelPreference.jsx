@@ -1,9 +1,8 @@
-import React,{useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import './TravelPreference.scss'
 import DisplayInputs from "../components/DisplayInputs";
 import { useNavigate} from "react-router-dom";
 import Navbar from "../components/Navbar";
-import axios from "axios";
 
 const TravelPreference = () => {
     const [origin, setOrigin] = useState('');
@@ -17,6 +16,7 @@ const TravelPreference = () => {
     const [comfortLevel, setComfortLevel] = useState('');
     const [currency, setCurrency] = useState('USD');
     const [additionalInfo, setAdditionalInfo] = useState('');
+    const [stayPref, setStayPref] = useState('');
     const [error,setError] = useState('');
     const navigate = useNavigate()
     
@@ -44,6 +44,7 @@ const TravelPreference = () => {
                 days,
                 groupSize,
                 comfortLevel,
+                stayPref,
             }
     
             if(theme)req.theme = themeName;
@@ -60,6 +61,10 @@ const TravelPreference = () => {
         
     }
 
+    const onDeleteClick = (input, inputArray) => {
+        setDestinations(inputArray.filter((item => item !== input)))
+    }
+
     return(
         <div className="content-page">
         <Navbar />
@@ -73,7 +78,7 @@ const TravelPreference = () => {
                     </div>
                     <div className="field-container">                
                         <label htmlFor="destinations">Where do you want to go?</label>
-                        {destinations.length>0 && <DisplayInputs inputArray={destinations}/>}
+                        {destinations.length>0 && <DisplayInputs inputArray={destinations} onDeleteClick={onDeleteClick}/>}
                         <input type="text" name="destinations" id="destinations" placeholder="city/state,country" value={destination} onChange={(e)=>setDestination(e.target.value)} required/>
                         <button onClick={(e)=>{
                             preventDefault(e);
@@ -107,6 +112,23 @@ const TravelPreference = () => {
                         <option value="no max">No Max</option>
                     </select>
                     </fieldset>
+                    <div className="field-container">
+                    <label htmlFor="stayPref">Stay Preference</label>
+                    <select
+                        name="stayPref"
+                        id="stayPref"
+                        value={stayPref}
+                        onChange={(e) => setStayPref(e.target.value)} // Update the state when an option is selected
+                    required>
+                        <option value="" disabled>
+                        Select Stay Preference
+                        </option>
+                        <option value="hotel">hotel</option>
+                        <option value="airbnb">airbnb</option>
+                        <option value="hotel and airbnb mixed">hotel and airbnb mixed</option>
+                        <option value="Doesn't matter, base on my budget and comfort level">Doesn't matter, base on my budget and comfort level</option>
+                    </select>
+                    </div>
                 </div>
                 <div className="form-right">
                 <div className="field-container">

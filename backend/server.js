@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/trips', require('./routes/tripRoutes'));
+app.use('/api/itinerary', require('./routes/itineraryRoutes'));
 // app.use('/api/bookings', require('./routes/bookingRoutes'));
 // app.use('/api/preferences', require('./routes/preferencesRoutes'));
 

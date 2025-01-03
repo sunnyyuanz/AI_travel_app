@@ -1,0 +1,49 @@
+.itinerary-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 1027px;
+
+    .day-details{
+        padding: 0 2rem;
+        h3{
+            text-align: left;
+        }
+
+        dl{
+            padding: 0 1rem;
+            margin: 0;
+            
+            dd{
+                text-align: justify;
+                margin-bottom: 1rem;
+                display: block;
+            }
+
+            dt{
+                display: inline;
+            }
+        }
+
+        button{
+            margin-top: 1rem;
+        }
+    }
+
+    .total-costs-container{
+        dl,.total-costs{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .total-costs{
+            p{
+                margin-left: 40px;
+            }
+        }
+    }
+
+    .go-back-btn{
+        align-self: flex-end;
+    }
+}
+
