@@ -16,7 +16,6 @@ const Itinerary = () => {
   const generatedItinerary = JSON.parse(localStorage.getItem("itinerary")) || null
   const generatedTitle = JSON.parse(localStorage.getItem("title")) || null
   const generatedTotalCosts = JSON.parse(localStorage.getItem("total_costs")) || null
-  const generatedImage = JSON.parse(localStorage.getItem("image")) || null
 
   // State to manage loading and response data
   const [isLoading, setIsLoading] = useState(true);
@@ -32,12 +31,11 @@ const Itinerary = () => {
 
   useEffect(() => {
     // Call the API on page load
-    if(generatedItinerary && generatedTitle && generatedTotalCosts && generatedImage){
+    if(generatedItinerary && generatedTitle && generatedTotalCosts){
       setItinerary(generatedItinerary)
       setTitle(generatedTitle)
       setTotalCosts(generatedTotalCosts)
       setIsLoading(false)
-      setImage(generatedImage)
     }else{
       const fetchItinerary = async () => {
         try {
@@ -50,7 +48,6 @@ const Itinerary = () => {
             localStorage.setItem("itinerary", JSON.stringify(response.data.itinerary) )
             localStorage.setItem("title", JSON.stringify(response.data.title) )
             localStorage.setItem("total_costs", JSON.stringify(response.data.itinerary_costs) )
-            localStorage.setItem("image", JSON.stringify(response.data.image) )
           } else {
             setError("Failed to generate itinerary. Please try again.");
           }
@@ -76,7 +73,6 @@ const Itinerary = () => {
 
     if(userSuggestion.length>0){
       setIsLoading(true)
-      setLoadingFinished(false)
       try {
         const response = await axios.post("http://127.0.0.1:5000/update_itinerary", {
             current_itinerary: {itinerary,title},
@@ -87,7 +83,6 @@ const Itinerary = () => {
           setUpdatedItinerary(response.data.itinerary);
           setTitle(response.data.title)
           setTotalCosts(response.data.itinerary_costs)
-          setImage(generatedImage)
           setUserSuggestion("")
         } else {
           alert("Failed to update itinerary: " + response.error);
@@ -127,7 +122,6 @@ const Itinerary = () => {
           userId: id,
           itinerary_costs: totalCosts,
           title,
-          image,
         });
         if (response.status === 200 || response.status === 201) {
           alert("Itinerary is saved!")
@@ -154,7 +148,6 @@ const Itinerary = () => {
     localStorage.getItem('itinerary') && localStorage.removeItem('itinerary')
     localStorage.getItem('title') && localStorage.removeItem('title')
     localStorage.getItem('total_costs') && localStorage.removeItem('total_costs')
-    localStorage.getItem('image') && localStorage.removeItem('image')
     navigate('/')
   }
 
