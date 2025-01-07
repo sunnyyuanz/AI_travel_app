@@ -4,6 +4,7 @@ import LoadingFinished from "../components/LoadingFinished";
 import Loading from "../components/Loading";
 import axios from "axios";
 import './itinerary.scss';
+import Navbar from "../components/Navbar";
 
 const Itinerary = () => {
   const location = useLocation();
@@ -152,7 +153,9 @@ const Itinerary = () => {
   }
 
   return (
-    <div>
+    <div className="content-page">
+        <Navbar />
+      <div>
       {isLoading ? <Loading /> : (
         !loadingFinished && image.length>1 ? <LoadingFinished setLoadingFinished = {setLoadingFinished} image={image}/> :
         <div className="itinerary-container">
@@ -226,6 +229,7 @@ const Itinerary = () => {
         <button onClick={onBackBtnClicked} className="go-back-btn">Go Back</button>
         </div>
       )}
+    </div>
     </div>
   );
 };
