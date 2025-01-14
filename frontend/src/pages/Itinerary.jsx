@@ -40,7 +40,7 @@ const Itinerary = () => {
     }else{
       const fetchItinerary = async () => {
         try {
-          const response = await axios.post('http://127.0.0.1:5000/generate_itinerary', req);
+          const response = await axios.post('http://3.145.213.236:5000/generate_itinerary', req);
           if (response.status === 200 || response.status === 201) {
             setItinerary(response.data.itinerary); // Save the response data
             setTitle(response.data.title);
@@ -75,7 +75,7 @@ const Itinerary = () => {
     if(userSuggestion.length>0){
       setIsLoading(true)
       try {
-        const response = await axios.post("http://127.0.0.1:5000/update_itinerary", {
+        const response = await axios.post("http://3.145.213.236:5000/update_itinerary", {
             current_itinerary: {itinerary,title},
             user_suggestion: userSuggestion,});
   
@@ -118,7 +118,7 @@ const Itinerary = () => {
 
       console.log(image)
       try {
-        const response = await axios.post("http://127.0.0.1:5001/api/itinerary/save-itinerary", {
+        const response = await axios.post("http://3.144.28.53:4000/api/itinerary/save-itinerary", {
           itinerary,
           userId: id,
           itinerary_costs: totalCosts,
