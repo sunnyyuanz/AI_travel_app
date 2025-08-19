@@ -23,7 +23,7 @@ const Register = () => {
     const onSubmit = async () => {
         if(username_validated(username)){
             setError("")
-            await axios.post('http://3.144.28.53:4000/api/users',{
+            await axios.post('http://3.22.130.213:4000/api/users',{
                 username: username
             }).then((response) => {
                 console.log(response)

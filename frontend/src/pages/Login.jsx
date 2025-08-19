@@ -12,7 +12,7 @@ const Login = () =>{
         if(!username){
             setError("Username is required!")
         }else{
-            await axios.post('http://3.144.28.53:4000/api/users/login',{
+            await axios.post('http://3.22.130.213:4000/api/users/login',{
                 username: username
             }).then((response) => {
                 console.log(response)
