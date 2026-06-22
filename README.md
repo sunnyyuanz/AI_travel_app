@@ -1,6 +1,6 @@
 # **AI Travel Agent App Documentation**
 
-## **Url**
+## **Url** (Too expensive, full experience Not Live anymore. Solving in progress...)
 http://ufytravelappui.s3-website.us-east-2.amazonaws.com/
 
 ## **1. Overview**
